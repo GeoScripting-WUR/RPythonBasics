@@ -1,6 +1,6 @@
 ---
 pagetitle: "R and Python basics"
-author: "Dainius Masiliūnas, Arno Timmer"
+author: "Dainius Masiliūnas"
 date: today
 format:
   html:
@@ -42,7 +42,7 @@ Both R and Python have extremely active communities maintaining a wealth of pack
 
 In practice, this means that while all geospatial data handling tasks can be done in R or Python, R is better integrated for this. In this course you will learn about the packages `terra` for raster handling and `sf` for vector handling, which are both integrated with each other and offer a full suite of processing tools, and all of the other packages that use vectors or rasters in R also make use of `sf` and `terra` package objects. In Python, raster reading is done using the `rasterio` package, but processing needs to be done using other packages, many of which do not support `rasterio` objects. Vector handling is done in for example `geopandas`, which has spatial processing tools, but once again they are not always integrated with raster object support. So rasters often need to be converted into number matrices for processing, then converted back into raster objects, by the user.
 
-Both R and Python can plot geospatial data and have several frameworks and packages for that. R has a built-in `plot()` function that can visualise any type of data quickly, and all packages make use of it. For more advanced custom visualisation, `ggplot2` can be used. In Python, the standard plotting package is `matplotlib`. Spatial packages often implement their own plotting functions for their own objects, therefore putting multiple objects into one plot can often be more challenging than in R.
+Both R and Python can plot geospatial data and have several frameworks and packages for that. R has a built-in `plot()` function that can visualise any type of data quickly, and all packages make use of it. For more advanced custom visualisation, `ggplot2` can be used. In Python, the standard plotting package is `matplotlib`. 
 
 Ultimately, the choice of language to use is often decided by interoperability needs (e.g. if you work in a company that uses Python, you will be expected to also write in Python, so that your script can be used in a pipeline) and personal preference.
 
@@ -143,14 +143,16 @@ WorldNr = 2
 paste("Hello world #", WorldNr, "!", sep="") # The 'sep' argument avoids adding spaces in between
 ```
 
-```{block type="alert alert-info"}
-**Note** that Python uses `=` to define a new variable or to give it a new value, as was done above for the variable `WorldNr`. On the other hand, R typically uses `<-` to assign a value to a variable. However R also accepts `=`. In this tutorial, we use `=` for R to keep it simple, but you will find later tutorials using `<-`. Keep in mind that either option is valid as long as it is kept consistent throughout your code!
-```
 
 Additionally, in Python, string formatting can be used, in for example a print function. To do this, we start a string with an `f` in front of the quote.
 ```{python, eval=FALSE}
 WorldNr = 2
 print(f"Hello world # {WorldNr} !")
+```
+
+
+```{block type="alert alert-info"}
+**Note** that Python uses `=` to define a new variable or to give it a new value, as was done above for the variable `WorldNr`. On the other hand, R typically uses `<-` to assign a value to a variable. However R also accepts `=`. In this tutorial, we use `=` for R to keep it simple, but you will find later tutorials using `<-`. Keep in mind that either option is valid as long as it is kept consistent throughout your code!
 ```
 
 A variable can also hold multiple values of a particular data type, or even mix data types. Python supports associative arrays, called dictionaries, that are created using curly braces:
