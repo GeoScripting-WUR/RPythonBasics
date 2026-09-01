@@ -49,7 +49,7 @@ Ultimately, the choice of language to use is often decided by interoperability n
 ## Running Python and R from Bash
 
 Both the `R` and the `python` interpreters can be run from Bash. Here is an example of code that is correct in both Python and R. You can use this example to execute a script written in either language:
-```{bash, eval=FALSE}
+```{bash}
 # Create a script file "script" (no extension)
 echo 'print("Hello world!")' > script
 # Run the script with R
@@ -62,7 +62,7 @@ This allows you to run script files even without having any graphical user inter
 
 Now, let's explore the similarities and differences between the two languages. For that, you need to have Python set up. Let's install the needed packages through the Bash terminal:
 
-```{bash, eval=FALSE}
+```{bash}
 sudo apt install python3-pandas
 ```
 
@@ -84,7 +84,7 @@ Both Python and R provide a set of primitive data types. The ones they have in c
 
 A whole number is called an integer, and a number with decimals (real number) is called a float (floating point number). In Python, if you enter a number without decimal points, it will be an integer, otherwise it will be a float.
 
-```{python, eval=FALSE}
+```{python}
 type(10)
 type(10.1)
 type(10.)
@@ -105,7 +105,7 @@ class(as.integer(10))
 
 Boolean, or logical, types can only have two values: true or false. When cast to an integer, true is represented by 1 and false is represented by 0. Both R and Python are case-sensitive, and use different cases to represent booleans (`True` in Python and `TRUE` in R).
 
-```{python, eval=FALSE}
+```{python}
 type(True)
 type(True + 2)
 True + 2
@@ -133,7 +133,7 @@ class('6')
 
 You can combine strings to produce longer strings. This is done with the function `paste()` in R and using the `+` operator in Python (as long as all parts are strings).
 
-```{python, eval=FALSE}
+```{python}
 WorldNr = 2
 "Hello world #" + str(WorldNr) + "!"
 ```
@@ -145,7 +145,7 @@ paste("Hello world #", WorldNr, "!", sep="") # The 'sep' argument avoids adding 
 
 
 Additionally, in Python, string formatting can be used, in for example a print function. To do this, we start a string with an `f` in front of the quote.
-```{python, eval=FALSE}
+```{python}
 WorldNr = 2
 print(f"Hello world # {WorldNr} !")
 ```
@@ -157,7 +157,7 @@ print(f"Hello world # {WorldNr} !")
 
 A variable can also hold multiple values of a particular data type, or even mix data types. Python supports associative arrays, called dictionaries, that are created using curly braces:
 
-```{python, eval=FALSE}
+```{python}
 WUR = {"name": "Wageningen University", "x": 5.7, "y": 52}
 WUR
 type(WUR)
@@ -185,7 +185,7 @@ paste(WUR, "addition!")
 
 Both R and Python support lists, which allow combining any data types into one variable. In Python they are created using square brackets, and in R using `list()`:
 
-```{python, eval=FALSE}
+```{python}
 WUR = ["Wageningen University", 5.7, 52]
 ```
 
@@ -195,7 +195,7 @@ WUR = list("Wageningen University", 5.7, 52)
 
 Elements of a list are sequential and can be accessed by slicing the list using a number (index) in square brackets. An important difference between the two languages is that R starts counting from 1, but Python starts counting from 0! This is similar to how in different countries, floors of buildings are counted starting from 1 or from 0. Netherlands is a "Python" style country where the ground floor is number 0, whereas Canada is an "R" style country where the ground floor is number 1. The R style has the advantage of the index matching the element number, i.e. `[2]` will give you the second element, where in Python the second element is `[1]`:
 
-```{python, eval=FALSE}
+```{python}
 WUR[1]
 ```
 
@@ -205,7 +205,7 @@ WUR[2]
 
 There is also a difference in what happens if you use a negative index. Python uses negative indices to wrap around, so `[-1]` means "last element", whereas in R it stands for exclusion, so `[-1]` means "all elements except for the first one":
 
-```{python, eval=FALSE}
+```{python}
 WUR[-1]
 ```
 
@@ -265,7 +265,7 @@ class(LocArray)
 As you can see, we have a cube with two elements in each dimension. Cubes are difficult to visualise, as they are 3D, and our screen is 2D. Therefore, when trying to print one, R presents the cube in "slices" of matrices.
 
 Base Python can only achieve a similar effect using nested lists:
-```{python, eval=FALSE}
+```{python}
 WURcoords = [5.7, 52]
 WURcoords
 LocMat = [WURcoords, WURcoords]
@@ -278,7 +278,7 @@ The structure is also a cube, but it is less structured, and therefore printing 
 
 Here we can also notice that R can perform vectorised arithmetics: `WURcoords + 1` added 1 to each value of the vector `WURcoords`, and `LocMat + 1` added 1 to each value of the matrix `LocMat`. Core Python does not allow doing so without writing a loop. However, since arrays and vectorised arithmetics are very useful, it has all been implemented in the package `NumPy`, which is now considered to be an essential package in Python:
 
-```{python, eval=FALSE}
+```{python}
 import numpy
 
 npWURcoords = numpy.array(WURcoords)
@@ -317,7 +317,7 @@ We see here that the `name` column is made of character strings, whereas `x` and
 
 In Python, Data Frames are implemented in the package `pandas`:
 
-```{python, eval=FALSE}
+```{python}
 import pandas
 WURbuildings = pandas.DataFrame({"name": ["Gaia", "Aurora"],  "x": [5.665, 5.657], "y": [51.987, 51.982]})
 WURbuildings
@@ -338,7 +338,7 @@ Buildings = c("Gaia", "Lumen", "Forum", "Orion", "Aurora", "Atlas")
 Buildings[2:4] # We get the second, third and fourth elements
 ```
 
-```{python, eval=FALSE}
+```{python}
 Buildings = ["Gaia", "Lumen", "Forum", "Orion", "Aurora", "Atlas"]
 Buildings[2:4] # We get the third and fourth elements
 ```
@@ -351,7 +351,7 @@ Buildings[1:3]
 Buildings[4:6]
 ```
 
-```{python, eval=FALSE}
+```{python}
 Buildings[:3] # The fourth element is not included
 Buildings[3:] # It is included here
 ```
@@ -369,7 +369,7 @@ LocMat
 LocMat[2, 1] # Get y coordinate of WUR campus
 ```
 
-```{python, eval=FALSE}
+```{python}
 npLocMat
 npLocMat[0, 1] # Get y coordinate of WUR campus
 ```
@@ -380,7 +380,7 @@ If you want to select the whole row/column, without manually specifying the size
 LocMat[, 1] # Get both coordinates of WUR campus
 ```
 
-```{python, eval=FALSE}
+```{python}
 npLocMat[0, :] # Get both coordinates of WUR campus
 ```
 
@@ -402,7 +402,7 @@ Generally the `$` accessor is not recommended, because it does not allow the use
 
 Note that in Python, the operator `[[]]` has a very different meaning: the outer `[]` is the accessor, and the inner `[]` is a list constructor, in other words, it's equivalent to the R `[c()]`:
 
-```{python, eval=FALSE}
+```{python}
 npLocArray = numpy.array([npLocMat, npLocMat + 1, npLocMat + 2, npLocMat + 3])
 npLocArray
 npLocArray[0,1] # Meaning "first layer, second row, all columns"
@@ -411,7 +411,7 @@ npLocArray[[0,2]] # Meaning "first and third layers, all rows and all columns"
 
 Similar to the R `$` accessor, Python has the accessor `.` to select by literal string:
 
-```{python, eval=FALSE}
+```{python}
 WURbuildings
 WURbuildings["name"]
 WURbuildings.name
@@ -432,7 +432,7 @@ LocMat > 50
 
 The same applies in NumPy:
 
-```{python, eval=FALSE}
+```{python}
 npLocMat
 npLocMat[npLocMat > 50]
 ```
@@ -481,7 +481,7 @@ So just like in R, when you need a single boolean result to control program flow
 
 Equivalent example code in Python (note the syntax differs a bit between R and Python, e.g. the lack of parentheses, the words for `and` and `or`, and the special `elif` keyword):
 
-```{python, eval=FALSE}
+```{python}
 MyLatitude = 52
 # Note that boolean conditionals only work with regular booleans, not with Series/DataFrames, hence the .values[0]
 GaiaLatitude = WURbuildings.loc[WURbuildings["name"] == "Gaia", "y"].values[0]
@@ -510,7 +510,7 @@ WURbuildings
 str(WURbuildings) # Show the structure of a data frame (which is also a type of list)
 ```
 
-```{python, eval=FALSE}
+```{python}
 WURbuildings # pandas data frame
 WURbuildings.dtypes # Shows data types
 vars(WURbuildings) # More generic, but does not work with lists and dicts
@@ -547,7 +547,7 @@ print(Aurora)
 The reason why this works is because R uses the concept of function signatures. When running `print()`, R will first check what is the class of the object you are calling the function on, and checks if there is a function defined that is called `print.class` (in our case `print.building`). On a match, it will run that function instead of the `print.default` function.
 
 In Python, we need to formally define a class and then instantiate it:
-```{python, eval=FALSE}
+```{python}
 class building:
   def __init__(self, name, coordinates):
     self.name = name
@@ -569,7 +569,7 @@ Aurora.print()
 
 Note that we called the method `print()` that is inside our object, not the global function `print()`, which would give a different output:
 
-```{python, eval=FALSE}
+```{python}
 print(Gaia)
 print(Aurora)
 ```
@@ -597,7 +597,7 @@ print(AuroraPurpose)
 ```
 
 In Python, inheritance is also formally declared in the definition of the new class:
-```{python, eval=FALSE}
+```{python}
 class purposeBuilding(building):
   def __init__(self, name, coordinates, purpose):
     super().__init__(name, coordinates) # Let the parent class handle these
@@ -611,7 +611,7 @@ Aurora.print()
 
 We can override methods by redeclaring them, but any instantiated objects will have to be reinstantiated for the changes to apply:
 
-```{python, eval=FALSE}
+```{python}
 # Let's also override the print now:
 class purposeBuilding(building):
   def __init__(self, name, coordinates, purpose):
@@ -638,7 +638,7 @@ Note that R also has a more formalised type of classes, called S4 classes, that 
 
 Another difference between R and Python you may also have noticed in the examples above: R uses curly braces `{}` to denote scope, whereas Python uses a colon `:` and enforces indentation. As an example:
 
-```{python, eval=FALSE}
+```{python}
 def scope():
   print("I am inside the scope of the function scope()!")
   print("I am also inside the scope of the function scope()!")
@@ -673,7 +673,7 @@ print(location)
 
 In Python it is also often true, but the list of exceptions is much longer.
 
-```{python, eval=FALSE}
+```{python}
 location = "Gaia"
 def move(where):
   location = where
@@ -685,7 +685,7 @@ print(location)
 
 For instance, lists are mutable even outside of the function scope:
 
-```{python, eval=FALSE}
+```{python}
 locations = ["Gaia"]
 def addLocation(where):
   locations.append(where)
@@ -699,7 +699,7 @@ Such mutability that goes outside of the function scope is called a side effect.
 
 To avoid such side effects, in Python we need to explicitly copy mutable objects:
 
-```{python, eval=FALSE}
+```{python}
 locations = ["Gaia"]
 def addLocation(where):
   result = locations.copy()
