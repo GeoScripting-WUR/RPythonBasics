@@ -8,7 +8,7 @@ format:
     theme: simplex
     highlight-style: zenburn
     toc: true
-    toc-location: left
+    toc-location: right
     css: styles.css
 ---
 
@@ -62,7 +62,7 @@ This allows you to run script files even without having any graphical user inter
 
 Now, let's explore the similarities and differences between the two languages. For that, you need to have Python set up. Let's install the needed packages through the Bash terminal:
 
-```{bash}
+```{bash, eval=FALSE}
 sudo apt install python3-pandas
 ```
 
@@ -317,7 +317,7 @@ We see here that the `name` column is made of character strings, whereas `x` and
 
 In Python, Data Frames are implemented in the package `pandas`:
 
-```{python}
+```{python, eval=FALSE}
 import pandas
 WURbuildings = pandas.DataFrame({"name": ["Gaia", "Aurora"],  "x": [5.665, 5.657], "y": [51.987, 51.982]})
 WURbuildings
@@ -411,7 +411,7 @@ npLocArray[[0,2]] # Meaning "first and third layers, all rows and all columns"
 
 Similar to the R `$` accessor, Python has the accessor `.` to select by literal string:
 
-```{python}
+```{python, eval=FALSE}
 WURbuildings
 WURbuildings["name"]
 WURbuildings.name
@@ -481,7 +481,7 @@ So just like in R, when you need a single boolean result to control program flow
 
 Equivalent example code in Python (note the syntax differs a bit between R and Python, e.g. the lack of parentheses, the words for `and` and `or`, and the special `elif` keyword):
 
-```{python}
+```{python, eval=FALSE}
 MyLatitude = 52
 # Note that boolean conditionals only work with regular booleans, not with Series/DataFrames, hence the .values[0]
 GaiaLatitude = WURbuildings.loc[WURbuildings["name"] == "Gaia", "y"].values[0]
@@ -510,7 +510,7 @@ WURbuildings
 str(WURbuildings) # Show the structure of a data frame (which is also a type of list)
 ```
 
-```{python}
+```{python, eval=FALSE}
 WURbuildings # pandas data frame
 WURbuildings.dtypes # Shows data types
 vars(WURbuildings) # More generic, but does not work with lists and dicts
