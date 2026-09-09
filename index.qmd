@@ -12,7 +12,12 @@ format:
     css: styles.css
 ---
 
-
+```{r}
+#| include: false
+# This is necessary to show outputs for students, 
+# the include is false hides this for the students. 
+reticulate::py_require("pandas")
+```
 [[WUR Geoscripting](https://geoscripting-wur.github.io/)]{.page-header-title} <img src="https://geoscripting-wur.github.io/figs/WUR_RGB_standard_2025.svg" alt="WUR logo" class="page-header-logo"/>
 
 
@@ -62,19 +67,19 @@ This allows you to run script files even without having any graphical user inter
 
 Now, let's explore the similarities and differences between the two languages. For that, you need to have Python set up. Let's install the needed packages through the Bash terminal:
 
-```{bash, eval=FALSE}
+```{bash}
 sudo apt install python3-pandas
 ```
 
 Now you can run R in one terminal, and run Python in another, to try out the code snippets below. To run R in interactive mode:
 
-```{bash, eval=FALSE}
+```bash
 R
 ```
 
 To run Python in interactive mode:
 
-```{bash, eval=FALSE}
+```bash
 python3
 ```
 
@@ -315,7 +320,7 @@ We see here that the `name` column is made of character strings, whereas `x` and
 
 In Python, Data Frames are implemented in the package `pandas`:
 
-```{python, eval=FALSE}
+```{python}
 import pandas
 WURbuildings = pandas.DataFrame({"name": ["Gaia", "Aurora"],  "x": [5.665, 5.657], "y": [51.987, 51.982]})
 WURbuildings
@@ -409,7 +414,7 @@ npLocArray[[0,2]] # Meaning "first and third layers, all rows and all columns"
 
 Similar to the R `$` accessor, Python has the accessor `.` to select by literal string:
 
-```{python, eval=FALSE}
+```{python}
 WURbuildings
 WURbuildings["name"]
 WURbuildings.name
@@ -479,7 +484,7 @@ So just like in R, when you need a single boolean result to control program flow
 
 Equivalent example code in Python (note the syntax differs a bit between R and Python, e.g. the lack of parentheses, the words for `and` and `or`, and the special `elif` keyword):
 
-```{python, eval=FALSE}
+```{python}
 MyLatitude = 52
 # Note that boolean conditionals only work with regular booleans, not with Series/DataFrames, hence the .values[0]
 GaiaLatitude = WURbuildings.loc[WURbuildings["name"] == "Gaia", "y"].values[0]
@@ -508,7 +513,7 @@ WURbuildings
 str(WURbuildings) # Show the structure of a data frame (which is also a type of list)
 ```
 
-```{python, eval=FALSE}
+```{python}
 WURbuildings # pandas data frame
 WURbuildings.dtypes # Shows data types
 vars(WURbuildings) # More generic, but does not work with lists and dicts
