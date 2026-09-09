@@ -1,37 +1,25 @@
 ---
 pagetitle: "R and Python basics"
-author: "Dainius Masiliūnas"
-date: "`r format(Sys.time(), '%d %B, %Y')`"
-output:
-  rmdformats::html_clean:
-    title: "R and Python basics"
-    highlight: zenburn
+author: "Dainius Masiliūnas, Arno Timmer"
+date: today
+format:
+  html:
+    title: "R & Python basics"
+    theme: simplex
+    highlight-style: zenburn
+    toc: true
+    toc-location: right
+    css: styles.css
 ---
 
-<!-- NOTE: when you are reknitting this, make sure to do `sudo apt install python3-pandas`,
-     and have the `reticulate` package installed. -->
-```{css, echo=FALSE}
-@import url("https://netdna.bootstrapcdn.com/bootswatch/3.0.0/simplex/bootstrap.min.css");
-.main-container {max-width: none;}
-pre {color: inherit; background-color: inherit;}
-code[class^="sourceCode"]::before {
-  content: attr(class);
-  display: block;
-  text-align: right;
-  font-size: 70%;
-}
+```{r}
+#| include: false
+# This is necessary to show outputs for students, 
+# the include is false hides this for the students. 
+reticulate::py_require("pandas")
+```
+[[WUR Geoscripting](https://geoscripting-wur.github.io/)]{.page-header-title} <img src="https://geoscripting-wur.github.io/figs/WUR_RGB_standard_2025.svg" alt="WUR logo" class="page-header-logo"/>
 
-pre[class^="sourceCode r"] {background-color: #333366;}
-pre[class^="sourceCode python"] {background-color: #555533;}
-code[class^="sourceCode r"]::before { content: "R Source";}
-code[class^="sourceCode python"]::before { content: "Python Source"; }
-code[class^="sourceCode bash"]::before { content: "Bash Source"; }
-```
-```{r setup, include=FALSE}
-library(reticulate)
-use_python("/usr/bin/python3", required = TRUE)
-```
-<font size="6">[WUR Geoscripting](https://geoscripting-wur.github.io/)</font> <img src="https://geoscripting-wur.github.io/figs/WUR_RGB_standard_2025.svg" alt="WUR logo" style="height: 50px;"/>
 
 # R and Python basics
 
@@ -79,19 +67,19 @@ This allows you to run script files even without having any graphical user inter
 
 Now, let's explore the similarities and differences between the two languages. For that, you need to have Python set up. Let's install the needed packages through the Bash terminal:
 
-```{bash, eval=FALSE}
+```{bash}
 sudo apt install python3-pandas
 ```
 
 Now you can run R in one terminal, and run Python in another, to try out the code snippets below. To run R in interactive mode:
 
-```{bash, eval=FALSE}
+```bash
 R
 ```
 
 To run Python in interactive mode:
 
-```{bash, eval=FALSE}
+```bash
 python3
 ```
 
